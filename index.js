@@ -24,8 +24,8 @@ app.use(function (req, res, next) {
 });
 
 
-const uri = 'mongodb+srv://kulkarnidhirubhai:Dhirubhai@mymongodb.hncsx9e.mongodb.net/mymongodb?retryWrites=true&w=majority';
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// const uri = 'mongodb+srv://kulkarnidhirubhai:Dhirubhai@mymongodb.hncsx9e.mongodb.net/mymongodb?retryWrites=true&w=majority';
+const client = new MongoClient(process.env.MONGODB_CONNECT_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 
@@ -112,6 +112,6 @@ app.delete("/deleteUser/:id", async (req, res) => {
   }
 });
 
-server.listen(4000, () => console.log(`listening on port 4000...`));
+server.listen(process.env.PORT, () => console.log(`listening on port 4000...`));
 
 module.exports = app;
